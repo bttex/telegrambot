@@ -24,11 +24,11 @@ def get_service_status(url):
         if image_pc and "hidden" in image_pc.get("class", []):
             new_image_pc = div_pc.find("img", {"id": "onlinePC"}) if div_pc else None
             if new_image_pc:
-                return "Online"
+                return "Servidor de The Division 2 está Online"
             else:
-                return "Offline"
+                return "O servidor de The Division 2 está passando por problemas técnicos"
         else:
-            return "Manutenção em andamento."
+            return "Manutenção em andamento no servidor de The Division 2."
     
     elif url == locaweb_url:
         div_component = soup.find("div", {"data-component-id": "b1fghzyns25r"})
@@ -39,9 +39,9 @@ def get_service_status(url):
                 if span.get("class") == ["name"] and span.text.strip() == "Email":
                     status_span = div_component.find("span", {"class": "component-status"})
                     if status_span and status_span.text.strip() == "Operational":
-                        return "Online"
+                        return "Servidor Email Locaweb Online"
         
-        return "Offline"
+        return "Servidor email Locaweb está offline"
 
     else:
         return "URL inválida."
