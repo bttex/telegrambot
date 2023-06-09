@@ -26,9 +26,9 @@ def check_status(message):
     div_pc = soup.find("div", {"id": "dvPC"})
     image_pc = div_pc.find("img", {"id": "maintenancePC"}) if div_pc else None
 
-    if image_pc and "hidden" in image_pc.get("class", []):
-        new_image_pc = div_pc.find("img", {"id": "onlinePC"}) if div_pc else None
-        if new_image_pc:
+    if image_pc and "hidden" in image_pc.get("class", []): #verifica se a imagem possui a classe hidden
+        new_image_pc = div_pc.find("img", {"id": "onlinePC"}) if div_pc else None #encontra a imagem nova
+        if new_image_pc: #se a imagem nova existir, enviar mensagem informando do encerramento da manutenção
             # Enviando mensagem para o chat
             chat_id = message.chat.id
             response_message = "A manutenção foi encerrada."
