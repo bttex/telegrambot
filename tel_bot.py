@@ -26,13 +26,16 @@ def check_status(message):
     div_pc = soup.find("div", {"id": "dvPC"})
     image_pc = div_pc.find("img", {"id": "maintenancePC"}) if div_pc else None
 
-    if image_pc:
-        # Enviando mensagem para o chat
-        chat_id = message.chat.id
-        response_message = "Servidor se encontra em manutenção"
-        bot.send_message(chat_id, response_message)
+    if image_pc and "hidden" in image_pc.get("class", []):
+        new_image_pc = div_pc.find("img", {"id": "onlinePC"}) if div_pc else None
+        if new_image_pc:
+            # Enviando mensagem para o chat
+            chat_id = message.chat.id
+            response_message = "A manutenção foi encerrada."
+            bot.send_message(chat_id, response_message)
+        
     else:
-        response_message = "A manutenção acabou!."
+        response_message = "Manutenção em andamento."
         bot.send_message(message.chat.id, response_message)
 
 
