@@ -11,7 +11,7 @@ bot_token = "6010277135:AAHqSfHKnZPChtmCzScXd8aadZ8bF1R_LNw"
 
 # Criar uma instância do bot
 bot = telebot.TeleBot(bot_token)
-
+last_status = {}
 # Função para obter o status do serviço
 def get_service_status(url):
     response = requests.get(url)
@@ -61,13 +61,17 @@ def handle_status(message):
 # Lidar com os callbacks dos botões
 @bot.callback_query_handler(func=lambda call: True)
 def handle_button_callback(call):
+    user_id = call.from_user.id
+    if user_id in last_status and last_status[user_id] == call.data:
+        return
+    
     if call.data == "division2":
         status = get_service_status(division2_url)
     elif call.data == "locaweb":
         status = get_service_status(locaweb_url)
     else:
         status = "Serviço inválido."
-    
+    last_status[user_id] = call.data
     # Enviar a mensagem com o status
     bot.send_message(call.message.chat.id, status)
 
