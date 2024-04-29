@@ -7,7 +7,7 @@ division2_url = "http://ubistatic-a.akamaihd.net/0115/tctd2/status.html"
 locaweb_url = "https://statusblog.locaweb.com.br/"
 
 # Token do seu bot Telegram
-bot_token = "6010277135:AAHqSfHKnZPChtmCzScXd8aadZ8bF1R_LNw"
+bot_token = ""
 
 # Criar uma instância do bot
 bot = telebot.TeleBot(bot_token)
