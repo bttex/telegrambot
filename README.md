@@ -24,7 +24,7 @@ Este projeto implementa um bot no Telegram para monitorar o status de servidores
    ```
    division2_url = <url>
     locaweb_url = <url>
-    anydesk_url = "<url
+    anydesk_url = <url>
     bot_token = <token>
    ```
 
