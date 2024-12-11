@@ -1,33 +1,62 @@
+# Monitoramento de Serviços com Telegram Bot
 
-# Telegram Service Bot
+Este projeto implementa um bot no Telegram para monitorar o status de servidores de serviços como The Division 2, Locaweb Email e AnyDesk. O bot permite que o usuário verifique o status de cada serviço e o seu endereço IP público.
 
-O código verifica o status de três serviços:
-The Division 2 Server (Ubisoft Connect)
-Locaweb Email
-AnyDesk
+## Funcionalidades
 
+- **Status dos Serviços**: O bot retorna o status dos servidores de serviços como "The Division 2", "Locaweb Email" e "AnyDesk".
+- **IP Público**: O bot também retorna o endereço IP público do dispositivo.
+- **Comandos**:
+  - `/status`: Exibe um menu para escolher entre os serviços disponíveis.
+  - `/ip` ou "ip": Exibe o IP público do dispositivo.
+  - "status locaweb", "status anydesk", "status division2": Retorna o status diretamente de cada serviço.
 
-Para verificar o status, o código faz uma solicitação HTTP para a página do serviço e analisa o HTML. Ele verifica se há uma imagem específica que indica que o serviço está online ou se há uma imagem específica que indica que o serviço está offline.
+## Requisitos
 
-O código também verifica se há uma mensagem específica que indica que o servidor está em manutenção.
+1. Python 3.x
+2. Telegram Bot Token configurado no `.env`.
+3. URLs dos serviços configuradas no `.env` (The Division 2, Locaweb, AnyDesk).
 
-O código usa uma função para obter o endereço IP público do usuário.
+## Configuração
 
-O código usa um botão de status que envia um teclado com três opções para o usuário escolher. Quando o usuário clica em um botão, o código verifica o status do serviço e envia uma mensagem com o status.
+1. **Crie um arquivo `.env` no diretório do projeto:**
 
-O código também usa comandos para obter o endereço IP público e verificar o status de um serviço. Quando o usuário envia um comando, o código verifica o status e envia uma mensagem com o status.
+   ```
+   division2_url = <url>
+    locaweb_url = <url>
+    anydesk_url = "<url
+    bot_token = <token>
+   ```
 
-O código usa um botão de IP que envia o endereço IP público do usuário.
+   - Substitua `<seu_token_do_bot>` pelo token do seu bot no Telegram.
+   - Substitua `<id_do_chat>` pelo ID do chat onde deseja receber as notificações.
+   - Certifique-se de que as URL estão corretas.
 
-O código usa duas funções anônimas para lidar com os comandos e os botões.
+2. **Instale as Dependências:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
+## Uso
 
-
-## Instalação
-
-Instale a biblioteca beautifulSoup, telebot e requests
+Execute o script para iniciar o monitoramento:
 
 ```bash
-  pip install telebot requests beautifulsoup4
+python tel_bot_update.py
 ```
-Execute o arquivo python e teste no telegram.
+
+
+## Contribuições
+
+Contribuições são bem-vindas! Para contribuir:
+
+1. Faça um fork do repositório.
+2. Crie uma branch para sua feature ou correção:
+   ```bash
+   git checkout -b minha-feature
+   ```
+3. Envie um Pull Request para revisão.
+
+## Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
